@@ -20,7 +20,7 @@ export function Header() {
                     <Link href="/" className="flex items-center gap-2 no-underline">
                         <span className="text-2xl">🏗️</span>
                         <span className="text-lg sm:text-xl font-bold text-secondary">
-                            КриворівноБуд
+                            КривоРівноБуд
                         </span>
                     </Link>
 

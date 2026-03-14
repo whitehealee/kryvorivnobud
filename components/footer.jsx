@@ -10,7 +10,7 @@ export function Footer() {
                     <div>
                         <div className="flex items-center gap-2 mb-4">
                             <span className="text-2xl">🏗️</span>
-                            <span className="text-xl font-bold">КриворівноБуд</span>
+                            <span className="text-xl font-bold">КривоРівноБуд</span>
                         </div>
                         <p className="text-neutral-300 text-sm leading-relaxed">
                             Професійні штукатурні роботи в Київській області. Працюємо якісно, швидко та за доступними цінами.
@@ -52,7 +52,7 @@ export function Footer() {
                 </div>
 
                 <div className="border-t border-white/10 mt-10 pt-8 text-center text-neutral-400 text-sm">
-                    <p>&copy; {currentYear} КриворівноБуд. Всі права захищені.</p>
+                    <p>&copy; {currentYear} КривоРівноБуд. Всі права захищені.</p>
                 </div>
             </div>
         </footer>
