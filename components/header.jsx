@@ -1,44 +1,85 @@
-import Image from 'next/image';
+'use client';
+
 import Link from 'next/link';
-import netlifyLogo from 'public/netlify-logo.svg';
-import githubLogo from 'public/images/github-mark-white.svg';
+import { useState } from 'react';
 
 const navItems = [
-    { linkText: 'Home', href: '/' },
-    { linkText: 'Revalidation', href: '/revalidation' },
-    { linkText: 'Image CDN', href: '/image-cdn' },
-    { linkText: 'Edge Function', href: '/edge' },
-    { linkText: 'Blobs', href: '/blobs' },
-    { linkText: 'Classics', href: '/classics' },
-    { linkText: 'Middleware', href: '/middleware' },
-    { linkText: 'Routing', href: '/routing' }
+    { linkText: 'Послуги', href: '#services' },
+    { linkText: 'Переваги', href: '#advantages' },
+    { linkText: 'Ціни', href: '#pricing' },
+    { linkText: 'Контакти', href: '#contact' },
 ];
 
 export function Header() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
     return (
-        <nav className="flex flex-wrap items-center gap-4 pt-6 pb-12 sm:pt-12 md:pb-24">
-            <Link href="/">
-                <Image src={netlifyLogo} alt="Netlify logo" />
-            </Link>
-            {!!navItems?.length && (
-                <ul className="flex flex-wrap gap-x-4 gap-y-1">
-                    {navItems.map((item, index) => (
-                        <li key={index}>
-                            <Link href={item.href} className="inline-flex px-1.5 py-1 sm:px-3 sm:py-2">
-                                {item.linkText}
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16 sm:h-20">
+                    <Link href="/" className="flex items-center gap-2 no-underline">
+                        <span className="text-2xl">🏗️</span>
+                        <span className="text-lg sm:text-xl font-bold text-secondary">
+                            КриворівноБуд
+                        </span>
+                    </Link>
+
+                    <ul className="hidden md:flex items-center gap-6">
+                        {navItems.map((item, index) => (
+                            <li key={index}>
+                                <Link
+                                    href={item.href}
+                                    className="text-neutral-700 font-medium no-underline hover:text-primary transition-colors"
+                                >
+                                    {item.linkText}
+                                </Link>
+                            </li>
+                        ))}
+                        <li>
+                            <Link href="tel:+380XXXXXXXXX" className="btn btn-primary no-underline text-sm">
+                                Зателефонувати
                             </Link>
                         </li>
-                    ))}
-                </ul>
-            )}
-            <Link
-                href="https://github.com/netlify-templates/next-platform-starter"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-auto"
-            >
-                <Image src={githubLogo} alt="GitHub logo" className="w-7" />
-            </Link>
+                    </ul>
+
+                    <button
+                        className="md:hidden p-2 text-neutral-700"
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        aria-label="Меню"
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            {menuOpen ? (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            ) : (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                            )}
+                        </svg>
+                    </button>
+                </div>
+
+                {menuOpen && (
+                    <div className="md:hidden pb-4 border-t border-neutral-100">
+                        <ul className="flex flex-col gap-2 pt-4">
+                            {navItems.map((item, index) => (
+                                <li key={index}>
+                                    <Link
+                                        href={item.href}
+                                        className="block px-3 py-2 text-neutral-700 font-medium no-underline hover:text-primary"
+                                        onClick={() => setMenuOpen(false)}
+                                    >
+                                        {item.linkText}
+                                    </Link>
+                                </li>
+                            ))}
+                            <li className="pt-2">
+                                <Link href="tel:+380XXXXXXXXX" className="btn btn-primary no-underline w-full text-sm">
+                                    Зателефонувати
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                )}
+            </div>
         </nav>
     );
 }
