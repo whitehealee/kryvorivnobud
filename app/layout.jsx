@@ -1,28 +1,25 @@
 import '../styles/globals.css';
-import { Footer } from '../components/footer';
-import { Header } from '../components/header';
 
 export const metadata = {
-    title: {
-        template: '%s | Netlify',
-        default: 'Netlify Starter'
-    }
+    title: 'КривоРівноБуд — Штукатурні роботи в Київській області',
+    description:
+        'Професійні штукатурні роботи в Київській області. Машинна та ручна штукатурка стін, фасадів, стель. Якісно, швидко, за доступними цінами. Безкоштовний виїзд на замір.',
+    keywords: 'штукатурні роботи, штукатурка стін, машинна штукатурка, Київська область, штукатурка фасадів, ремонт квартир',
+    openGraph: {
+        title: 'КривоРівноБуд — Штукатурні роботи в Київській області',
+        description: 'Професійні штукатурні роботи в Київській області. Машинна та ручна штукатурка.',
+        type: 'website',
+    },
 };
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <html lang="uk">
             <head>
                 <link rel="icon" href="/favicon.svg" sizes="any" />
             </head>
-            <body className="antialiased text-white bg-blue-900">
-                <div className="flex flex-col min-h-screen px-6 bg-noise sm:px-12">
-                    <div className="flex flex-col w-full max-w-5xl mx-auto grow">
-                        <Header />
-                        <main className="grow">{children}</main>
-                        <Footer />
-                    </div>
-                </div>
+            <body className="antialiased">
+                {children}
             </body>
         </html>
     );
